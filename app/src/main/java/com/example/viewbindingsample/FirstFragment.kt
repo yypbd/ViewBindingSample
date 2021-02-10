@@ -35,7 +35,12 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            // findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+
+            // https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args
+            val userName = "test username";
+            val action = FirstFragmentDirections.actionFirstFragmentToSecondFragment(userName)
+            findNavController().navigate(action)
         }
     }
 }

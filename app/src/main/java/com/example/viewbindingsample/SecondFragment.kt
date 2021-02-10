@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.viewbindingsample.databinding.FragmentFirstBinding
 import com.example.viewbindingsample.databinding.FragmentSecondBinding
 
@@ -16,6 +17,9 @@ import com.example.viewbindingsample.databinding.FragmentSecondBinding
 class SecondFragment : Fragment() {
     private var _binding: FragmentSecondBinding? = null
     private val binding get() = _binding!!
+
+    // val args: ConfirmationFragmentArgs by navArgs()
+    val args: SecondFragmentArgs by navArgs()
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -38,5 +42,7 @@ class SecondFragment : Fragment() {
         binding.buttonSecond.setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
+
+        binding.textviewSecond.text = args.userName
     }
 }
